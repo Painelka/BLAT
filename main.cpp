@@ -1,8 +1,9 @@
 ﻿#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 using namespace sf;
 float kadr = 0; // кадр анимации
 
-class player {
+class player { //класс персонажа
 public:
     float m_x, m_y, m_w, m_h, m_vx, m_vy, m_speed = 0;
     int dir = 0;
@@ -48,16 +49,19 @@ class fon {
 int main(){
     RenderWindow window(VideoMode(1920, 1080), "DEAD!");
 
-    Texture texture;
+    Texture texture; // фон
     Sprite Fon;
     texture.loadFromFile("assets/Fon.png");
     Fon.setTexture(texture);
 
+    SoundBuffer hello; // музыка
+    hello.loadFromFile("assets/hello.wav");
+    Sound sound(hello);
+    sound.setVolume(30.f);
 
     player boy(1000, 450, 350, 620, "boy.png");
     Clock clock;
-    while (window.isOpen())
-    {
+    while (window.isOpen()){
         float time = clock.getElapsedTime().asMicroseconds();
         clock.restart();
         time = time / 1500;
@@ -86,14 +90,13 @@ int main(){
             }
             boy.sprite.setTextureRect(IntRect(370 * int(kadr), 0, 350, 620));
         }
-
-
-
+        if (Keyboard::isKeyPressed(Keyboard::F)) {
+            sound.play();
+        }
         window.clear();
         window.draw(Fon);
         window.draw(boy.sprite);
         window.display();
     }
-
     return 0;
 }

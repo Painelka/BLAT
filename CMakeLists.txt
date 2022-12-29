@@ -18,6 +18,7 @@ include_directories("inc/")
 link_directories("ext/SFML/lib/")	
 
 add_executable("${PROJECT_NAME}" main.cpp
+                                 header.hpp
 
 		
 )
@@ -38,3 +39,4 @@ target_link_libraries("${PROJECT_NAME}" sfml-graphics-s-d
 						  ogg)
 file(COPY "assets/boy.png" DESTINATION "/assets/")
 file(COPY "assets/Fon.png" DESTINATION "/assets/")
+file(COPY "assets/hello.wav" DESTINATION "/assets/")
