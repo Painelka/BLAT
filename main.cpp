@@ -18,7 +18,7 @@ int main(){
     Sound sound(hello);
     sound.setVolume(30.f);
 
-    player boy(1000, 450, 350, 620, "boy.png");
+    lol::player boy(1000, 450, 350, 620, "boy.png");
     Clock clock;
     while (window.isOpen()){
         float time = clock.getElapsedTime().asMicroseconds();
