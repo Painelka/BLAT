@@ -18,7 +18,7 @@ int main(){
     Sound sound(hello);
     sound.setVolume(30.f);
 
-    lol::player boy(200, 450, 48, 96, "player.png");
+    lol::player boy(200, 450, 48, 80, "player.png");
     Clock clock;
     while (window.isOpen()){
         float time = clock.getElapsedTime().asMicroseconds();
@@ -38,7 +38,7 @@ int main(){
             if (kadr > 4) {
                 kadr = kadr - 4;
             }
-            boy.sprite.setTextureRect(IntRect(48 * int(kadr), 144, 48, 96));
+            boy.sprite.setTextureRect(IntRect(48 * int(kadr), 144, 48, 80));
         }
         if (Keyboard::isKeyPressed(Keyboard::D)) {
             boy.dir = 1;
@@ -47,7 +47,7 @@ int main(){
             if (kadr > 4) {
                 kadr = kadr - 4;
             }
-            boy.sprite.setTextureRect(IntRect(48 * int(kadr), 96, 48, 96));
+            boy.sprite.setTextureRect(IntRect(48 * int(kadr), 96, 48, 80));
         }
         if (Keyboard::isKeyPressed(Keyboard::F)) {
             sound.play();
