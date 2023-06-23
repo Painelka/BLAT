@@ -34,20 +34,20 @@ int main(){
         if (Keyboard::isKeyPressed(Keyboard::A)) {
             boy.dir = 0;
             boy.m_speed = 0.5;
-            kadr = kadr + 0.01 * time;
+            kadr = kadr + 0.02 * time;
             if (kadr > 4) {
                 kadr = kadr - 4;
             }
-            boy.sprite.setTextureRect(IntRect(48 * int(kadr), 144, 48, 80));
+            boy.sprite.setTextureRect(IntRect(48 * int(kadr), 240, 48, 80));
         }
         if (Keyboard::isKeyPressed(Keyboard::D)) {
             boy.dir = 1;
             boy.m_speed = 0.5;
-            kadr = kadr + 0.01 * time;
+            kadr = kadr + 0.02 * time;
             if (kadr > 4) {
                 kadr = kadr - 4;
             }
-            boy.sprite.setTextureRect(IntRect(48 * int(kadr), 96, 48, 80));
+            boy.sprite.setTextureRect(IntRect(48 * int(kadr), 160, 48, 80));
         }
         if (Keyboard::isKeyPressed(Keyboard::F)) {
             sound.play();
