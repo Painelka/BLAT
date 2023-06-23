@@ -2,7 +2,7 @@
 #include <SFML/Audio.hpp>
 #include "header.hpp"
 using namespace sf;
-float kadr = 0; // кадр анимации
+float kadr = 1; // кадр анимации
 
 
 int main(){
@@ -18,7 +18,7 @@ int main(){
     Sound sound(hello);
     sound.setVolume(30.f);
 
-    lol::player boy(1000, 450, 350, 620, "boy.png");
+    lol::player boy(200, 450, 48, 96, "player.png");
     Clock clock;
     while (window.isOpen()){
         float time = clock.getElapsedTime().asMicroseconds();
@@ -29,7 +29,7 @@ int main(){
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-        boy.stopped(1000, 350);
+       /* boy.stopped(1000, 350);*/
         boy.update(time);
         if (Keyboard::isKeyPressed(Keyboard::A)) {
             boy.dir = 0;
@@ -38,7 +38,7 @@ int main(){
             if (kadr > 4) {
                 kadr = kadr - 4;
             }
-            boy.sprite.setTextureRect(IntRect(375 * int(kadr), 600, 350, 620));
+            boy.sprite.setTextureRect(IntRect(48 * int(kadr), 144, 48, 96));
         }
         if (Keyboard::isKeyPressed(Keyboard::D)) {
             boy.dir = 1;
@@ -47,7 +47,7 @@ int main(){
             if (kadr > 4) {
                 kadr = kadr - 4;
             }
-            boy.sprite.setTextureRect(IntRect(370 * int(kadr), 0, 350, 620));
+            boy.sprite.setTextureRect(IntRect(48 * int(kadr), 96, 48, 96));
         }
         if (Keyboard::isKeyPressed(Keyboard::F)) {
             sound.play();
