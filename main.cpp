@@ -33,8 +33,8 @@ int main(){
         boy.update(time);
         if (Keyboard::isKeyPressed(Keyboard::A)) {
             boy.dir = 0;
-            boy.m_speed = 0.5;
-            kadr = kadr + 0.02 * time;
+            boy.m_speed = 0.3;
+            kadr = kadr + 0.01 * time;
             if (kadr > 4) {
                 kadr = kadr - 4;
             }
@@ -42,12 +42,30 @@ int main(){
         }
         if (Keyboard::isKeyPressed(Keyboard::D)) {
             boy.dir = 1;
-            boy.m_speed = 0.5;
-            kadr = kadr + 0.02 * time;
+            boy.m_speed = 0.3;
+            kadr = kadr + 0.01 * time;
             if (kadr > 4) {
                 kadr = kadr - 4;
             }
             boy.sprite.setTextureRect(IntRect(48 * int(kadr), 160, 48, 80));
+        }
+        if (Keyboard::isKeyPressed(Keyboard::W)) {
+            boy.dir = 2;
+            boy.m_speed = 0.3;
+            kadr = kadr + 0.01 * time;
+            if (kadr > 4) {
+                kadr = kadr - 4;
+            }
+            boy.sprite.setTextureRect(IntRect(48 * int(kadr), 80, 48, 80));
+        }
+        if (Keyboard::isKeyPressed(Keyboard::S)) {
+            boy.dir = 3;
+            boy.m_speed = 0.3;
+            kadr = kadr + 0.01 * time;
+            if (kadr > 4) {
+                kadr = kadr - 4;
+            }
+            boy.sprite.setTextureRect(IntRect(48 * int(kadr), 0, 48, 80));
         }
         if (Keyboard::isKeyPressed(Keyboard::F)) {
             sound.play();

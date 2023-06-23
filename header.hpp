@@ -26,6 +26,8 @@ namespace lol {
             switch (dir) {
             case 0: m_vx = -m_speed; m_vy = 0; break;
             case 1: m_vx = m_speed; m_vy = 0; break;
+            case 2: m_vx = 0; m_vy = -m_speed; break;
+            case 3: m_vx = 0; m_vy = m_speed; break;
             }
             m_x = m_x + m_vx * time;
             m_y = m_y + m_vy * time;
