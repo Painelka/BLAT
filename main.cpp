@@ -13,11 +13,6 @@ int main(){
     texture.loadFromFile("assets/Fon.png");
     Fon.setTexture(texture);
 
-    SoundBuffer hello; // музыка
-    hello.loadFromFile("assets/hello.wav");
-    Sound sound(hello);
-    sound.setVolume(30.f);
-
     lol::player boy(200, 450, 48, 80, "player.png");
     Clock clock;
     while (window.isOpen()){
@@ -67,10 +62,7 @@ int main(){
             }
             boy.sprite.setTextureRect(IntRect(48 * int(kadr), 0, 48, 80));
         }
-        if (Keyboard::isKeyPressed(Keyboard::F)) {
-            sound.play();
-        }
-        if (boy.perehod(1000, 48, 80, 800) ){
+        if (boy.perehod(80, 800)){
             Sprite Pink;
             texture.loadFromFile("assets/pink_2.png");
             Pink.setTexture(texture);
@@ -78,6 +70,14 @@ int main(){
             window.draw(Pink);
             window.draw(boy.sprite);
         }
+        if (boy.granics(80, 800)) {
+
+            window.clear();
+            window.draw(Fon);
+            window.draw(boy.sprite);
+        }
+
+  
         window.clear();
         window.draw(Fon);
         window.draw(boy.sprite);
