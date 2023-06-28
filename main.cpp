@@ -40,7 +40,7 @@ int main(){
             }
             boy.sprite.setTextureRect(IntRect(48 * int(kadr), 240, 48, 80));
         }
-        if (Keyboard::isKeyPressed(Keyboard::D)) {
+        else if (Keyboard::isKeyPressed(Keyboard::D)) {
             boy.dir = 1;
             boy.m_speed = 0.3;
             kadr = kadr + 0.01 * time;
@@ -49,7 +49,7 @@ int main(){
             }
             boy.sprite.setTextureRect(IntRect(48 * int(kadr), 160, 48, 80));
         }
-        if (Keyboard::isKeyPressed(Keyboard::W)) {
+        else if (Keyboard::isKeyPressed(Keyboard::W)) {
             boy.dir = 2;
             boy.m_speed = 0.3;
             kadr = kadr + 0.01 * time;
@@ -58,7 +58,7 @@ int main(){
             }
             boy.sprite.setTextureRect(IntRect(48 * int(kadr), 80, 48, 80));
         }
-        if (Keyboard::isKeyPressed(Keyboard::S)) {
+        else if (Keyboard::isKeyPressed(Keyboard::S)) {
             boy.dir = 3;
             boy.m_speed = 0.3;
             kadr = kadr + 0.01 * time;
@@ -69,6 +69,14 @@ int main(){
         }
         if (Keyboard::isKeyPressed(Keyboard::F)) {
             sound.play();
+        }
+        if (boy.perehod(1000, 48, 80, 800) ){
+            Sprite Pink;
+            texture.loadFromFile("assets/pink_2.png");
+            Pink.setTexture(texture);
+            window.clear();
+            window.draw(Pink);
+            window.draw(boy.sprite);
         }
         window.clear();
         window.draw(Fon);

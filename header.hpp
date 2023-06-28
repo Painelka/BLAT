@@ -28,7 +28,6 @@ namespace lol {
             case 1: m_vx = m_speed; m_vy = 0; break;
             case 2: m_vx = 0; m_vy = -m_speed; break;
             case 3: m_vx = 0; m_vy = m_speed; break;
-            case 4: m_vx = m_speed*2;; m_vy = -m_speed*0.5; break;
             }
             m_x = m_x + m_vx * time;
             m_y = m_y + m_vy * time;
@@ -42,11 +41,18 @@ namespace lol {
             if ((m_x <= 0) && (Keyboard::isKeyPressed(Keyboard::A))) {
                 m_speed = 0;
             }
-            if ((m_y <= 0) && (Keyboard::isKeyPressed(Keyboard::W))) {
-                m_speed = 0;
-            }
+
             if ((m_y + m_h >= 1080) && (Keyboard::isKeyPressed(Keyboard::S))) {
                 m_speed = 0;
+            }
+        }
+        bool perehod(int x, int w, int y, int h) {
+            if ((m_y <= 0) && (Keyboard::isKeyPressed(Keyboard::W))) {
+                m_y = 1000;
+                return true;
+            }
+            else {
+                return false;
             }
         }
     };
