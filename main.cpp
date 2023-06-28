@@ -29,7 +29,7 @@ int main(){
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-       /* boy.stopped(1000, 350);*/
+        boy.stopped(1000, 48,80, 800);
         boy.update(time);
         if (Keyboard::isKeyPressed(Keyboard::A)) {
             boy.dir = 0;
