@@ -13,7 +13,7 @@ int main(){
     texture.loadFromFile("assets/Fon.png");
     Fon.setTexture(texture);
 
-    lol::player boy(200, 450, 48, 80, "player.png");
+    lol::player boy(200, 450, 48, 80, "player.png", 1);
     Clock clock;
     while (window.isOpen()){
         float time = clock.getElapsedTime().asMicroseconds();
@@ -71,7 +71,8 @@ int main(){
             window.draw(boy.sprite);
         }
         if (boy.granics(80, 800)) {
-
+            texture.loadFromFile("assets/Fon.png");
+            Fon.setTexture(texture);
             window.clear();
             window.draw(Fon);
             window.draw(boy.sprite);
