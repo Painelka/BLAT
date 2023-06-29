@@ -28,9 +28,9 @@ int main(){
 
     sf::Text text;
     text.setFont(font);
-    text.setString("Hello, World!");
-    text.setCharacterSize(35);
-    text.setPosition(200, 200);
+    text.setString(L"Лирэ");
+    text.setCharacterSize(55);
+    text.setPosition(200, 700);
 
 
 
@@ -106,20 +106,24 @@ int main(){
         }
         lol::Textbox Box(100, 500, 800, 300, "Box1.png");
         bool flak = false;
+        
         if (Keyboard::isKeyPressed(Keyboard::E)) {
-            cout << flak << endl;
+            int k = 0;
             flak = true;
-            window.draw(textbox_sprite);
+            window.draw(Box.textbox_sprite);
             window.draw(text);
             window.display();
-            while (flak) {
-                window.draw(textbox_sprite);
+            while ((flak) &&(k<2)) {
+                window.draw(Box.textbox_sprite);
                 window.draw(text);
                 
                 if (Keyboard::isKeyPressed(Keyboard::Q)) {
-                    flak = false;
-                    cout << endl;
-                    cout << flak << endl;
+                    k = k + 1;
+                    Text text1;
+                    text1.setString(L"Lalalalalalla");
+                    window.draw(text1);
+                    
+
                 }
             }
           

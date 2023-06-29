@@ -106,9 +106,10 @@ namespace lol {
             m1_w = w1;
             m1_h = h1;
             m_name = name1;
+            String word;
             font.loadFromFile("text/thin_pixel-7.ttf");
-            Text text("", font, 25);
-            text.setPosition(500, 700);
+            sf::Text text5 (word , font, 25);
+            text5.setPosition(200, 200);
             textbox_texture.loadFromFile("text/" + name1 );
             textbox_sprite.setTexture(textbox_texture);
             
