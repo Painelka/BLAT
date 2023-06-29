@@ -98,19 +98,21 @@ namespace lol {
         bool haslimit = false;
         int limit;
     public:
-       
-        Textbox(int size, Color color, bool sel) {
-            
+        Sprite textbox_sprite;
+        float m_x, m_y, m_w, m_h=0;
+        String m_name;
+        Texture texture;
+        Textbox(int x, int y, int w, int h, String name) {
+            m_x = x;
+            m_y = y;
+            m_w = w;
+            m_h = h;
+            m_name = name;
+            texture.loadFromFile("text/" + name);
+            textbox_sprite.setTexture(texture);
+            textbox_sprite.setTextureRect(IntRect(0, 0, m_w, m_h));
+            textbox_sprite.setPosition(m_x, m_y);
         }
-        void say() {
-            if (Keyboard::isKeyPressed(Keyboard::E)) {
-
-            }
-        
-        }
-
-
-
 
 
 

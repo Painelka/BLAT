@@ -10,11 +10,8 @@ int main(){
     Sprite Fon;
     texture.loadFromFile("assets/Fon.png");
     Fon.setTexture(texture);
-    Texture texture_box; // фон
-    Sprite Textbox;
-    texture.loadFromFile("text/Box.png");
-    Textbox.setTexture(texture_box);
     lol::player boy(200, 450, 48, 80, "player.png", 1);
+    lol::Textbox textbox(10, 700, 800, 300, "Box.png");
     Clock clock;
     while (window.isOpen()){
         float time = clock.getElapsedTime().asMicroseconds();
@@ -83,7 +80,7 @@ int main(){
         window.clear();
         window.draw(Fon);
         window.draw(boy.sprite);
-        window.draw(Textbox);
+        window.draw(textbox.textbox_sprite);
         window.display();
     }
     return 0;
