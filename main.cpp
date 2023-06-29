@@ -5,13 +5,15 @@ using namespace sf;
 float kadr = 1; // кадр анимации
 
 int main(){
-    RenderWindow window(VideoMode(1920, 1080), "DEAD!");
+    RenderWindow window(VideoMode(1920, 1080), "Lire");
     Texture texture; // фон
     Sprite Fon;
     texture.loadFromFile("assets/Fon.png");
     Fon.setTexture(texture);
+
     lol::player boy(200, 450, 48, 80, "player.png", 1);
-    lol::Textbox textbox(10, 700, 800, 300, "Box.png");
+    lol::Textbox textbox(100, 500, 800, 300, "Box.png");
+
     Clock clock;
     while (window.isOpen()){
         float time = clock.getElapsedTime().asMicroseconds();
@@ -67,6 +69,7 @@ int main(){
             window.clear();
             window.draw(Pink);
             window.draw(boy.sprite);
+            window.draw(textbox.textbox_sprite);
         }
         if (boy.granics(80, 800)) {
             texture.loadFromFile("assets/Fon.png");
@@ -74,6 +77,7 @@ int main(){
             window.clear();
             window.draw(Fon);
             window.draw(boy.sprite);
+            window.draw(textbox.textbox_sprite);
         }
 
   

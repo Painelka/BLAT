@@ -18,7 +18,7 @@ include_directories("inc/")
 link_directories("ext/SFML/lib/")	
 
 add_executable("${PROJECT_NAME}" main.cpp
-                                 header.hpp
+                                 move.hpp
 
 		
 )
@@ -37,6 +37,8 @@ target_link_libraries("${PROJECT_NAME}" sfml-graphics-s-d
 						  vorbisfile
 						  vorbis
 						  ogg)
-file(COPY "assets/boy.png" DESTINATION "/assets/")
+file(COPY "assets/Player.png" DESTINATION "/assets/")
 file(COPY "assets/Fon.png" DESTINATION "/assets/")
-file(COPY "assets/hello.wav" DESTINATION "/assets/")
+file(COPY "assets/pink_2.png" DESTINATION "/assets/")
+file(COPY "text/Box.png" DESTINATION "/text/")
+file(COPY "text/thin_pixel-7.ttf" DESTINATION "/text/")
