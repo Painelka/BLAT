@@ -1,18 +1,19 @@
 ﻿#include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include "header.hpp"
+#include "move.hpp"
 using namespace sf;
 float kadr = 1; // кадр анимации
 
-
 int main(){
     RenderWindow window(VideoMode(1920, 1080), "DEAD!");
-
     Texture texture; // фон
     Sprite Fon;
     texture.loadFromFile("assets/Fon.png");
     Fon.setTexture(texture);
-
+    Texture texture_box; // фон
+    Sprite Textbox;
+    texture.loadFromFile("text/Box.png");
+    Textbox.setTexture(texture_box);
     lol::player boy(200, 450, 48, 80, "player.png", 1);
     Clock clock;
     while (window.isOpen()){
@@ -82,6 +83,7 @@ int main(){
         window.clear();
         window.draw(Fon);
         window.draw(boy.sprite);
+        window.draw(Textbox);
         window.display();
     }
     return 0;

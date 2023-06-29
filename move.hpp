@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <iostream>
+#include <sstream>
 using namespace std;
 using namespace sf;
 namespace lol {
@@ -89,7 +90,32 @@ namespace lol {
         }
 
     };
+    class Textbox {
+    private:
+        Text textbox;
+        ostringstream text;
+        bool isSelected = false;
+        bool haslimit = false;
+        int limit;
+    public:
+       
+        Textbox(int size, Color color, bool sel) {
+            
+        }
+        void say() {
+            if (Keyboard::isKeyPressed(Keyboard::E)) {
 
+            }
+        
+        }
+
+
+
+
+
+
+
+    };
 }
 
 
