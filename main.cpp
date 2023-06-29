@@ -5,6 +5,7 @@ using namespace sf;
 float kadr = 1; // кадр анимации
 
 int main(){
+    setlocale(LC_ALL, "Russian");
     RenderWindow window(VideoMode(1920, 1080), "Lire");
     Texture texture; // фон
     Sprite Fon;
