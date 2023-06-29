@@ -12,8 +12,8 @@ int main(){
     texture.loadFromFile("assets/Fon.png");
     Fon.setTexture(texture);
 
-    lol::player boy(200, 450, 48, 80, "player.png", 1);
-    lol::Textbox textbox(100, 500, 800, 300, "Box.png");
+    lol::player boy(200, 450, 48, 80, "player.png", 1, "Лирэ");
+    lol::Textbox Box(100, 500, 800, 300, "Box1.png");
 
     Clock clock;
     while (window.isOpen()){
@@ -70,7 +70,6 @@ int main(){
             window.clear();
             window.draw(Pink);
             window.draw(boy.sprite);
-            window.draw(textbox.textbox_sprite);
         }
         if (boy.granics(80, 800)) {
             texture.loadFromFile("assets/Fon.png");
@@ -78,14 +77,17 @@ int main(){
             window.clear();
             window.draw(Fon);
             window.draw(boy.sprite);
-            window.draw(textbox.textbox_sprite);
         }
-
-  
+        if (Keyboard::isKeyPressed(Keyboard::E)) {
+            Font font;
+            font.loadFromFile("text/thin_pixel-7.ttf");
+            Text text1("ewfjkwopjigpowejhfpiohgpoagvnosopdfjpoweiufh", font, 20);
+           
+        }
         window.clear();
         window.draw(Fon);
         window.draw(boy.sprite);
-        window.draw(textbox.textbox_sprite);
+        window.draw(Box.textbox_sprite);
         window.display();
     }
     return 0;

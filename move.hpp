@@ -14,12 +14,15 @@ namespace lol {
         String m_name;
         Texture texture;
         Sprite sprite;
-        player(int x, int y, int w, int h, String name, int location) {
+        String m_Hero_name;
+        player () {}
+        player(int x, int y, int w, int h, String name, int location, string Hero_name ) {
             m_x = x;
             m_y = y;
             m_w = w;
             m_h = h;
             m_name = name;
+            m_Hero_name = Hero_name;
             m_location = location;
             texture.loadFromFile("assets/" + name);
             sprite.setTexture(texture);
@@ -90,24 +93,27 @@ namespace lol {
         }
 
     };
-    class Textbox {
+    class Textbox: public player {
     public:
         Sprite textbox_sprite;
-        float m_x, m_y, m_w, m_h=0;
-        String m_name;
+        float m1_x, m1_y, m1_w, m1_h=0;
+        String m_name1;
         Texture textbox_texture;
-        Textbox(int x, int y, int w, int h, String name) {
-            m_x = x;
-            m_y = y;
-            m_w = w;
-            m_h = h;
-            m_name = name;
-            textbox_texture.loadFromFile("text/" + name);
+        Font font;
+        Textbox(int x1, int y1, int w1, int h1, String name1) {
+            m1_x = x1;
+            m1_y = y1;
+            m1_w = w1;
+            m1_h = h1;
+            m_name = name1;
+            font.loadFromFile("text/thin_pixel-7.ttf");
+            Text text("", font, 25);
+            text.setPosition(500, 700);
+            textbox_texture.loadFromFile("text/" + name1 );
             textbox_sprite.setTexture(textbox_texture);
-            textbox_sprite.setTextureRect(IntRect(0, 0, m_w, m_h));
-            textbox_sprite.setPosition(m_x, m_y);
+            
+           
         }
-
 
 
 
