@@ -40,5 +40,6 @@ target_link_libraries("${PROJECT_NAME}" sfml-graphics-s-d
 file(COPY "assets/Player.png" DESTINATION "/assets/")
 file(COPY "assets/Fon.png" DESTINATION "/assets/")
 file(COPY "assets/pink_2.png" DESTINATION "/assets/")
+file(COPY "assets/npc.png" DESTINATION "/assets/")
 file(COPY "text/Box.png" DESTINATION "/text/")
 file(COPY "text/thin_pixel-7.ttf" DESTINATION "/text/")

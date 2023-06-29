@@ -76,10 +76,10 @@ namespace lol {
             sprite.setPosition(m_x, m_y);
         }
         void stopped(int x, int w, int y, int h) {
-            if ((m_x + m_w >= 1920) && (Keyboard::isKeyPressed(Keyboard::D))) {
+            if ((m_x + m_w >= 1900) && (Keyboard::isKeyPressed(Keyboard::D))) {
                 m_speed = 0;
             }
-            if ((m_x <= 0) && (Keyboard::isKeyPressed(Keyboard::A))) {
+            if ((m_x <= 10) && (Keyboard::isKeyPressed(Keyboard::A))) {
                 m_speed = 0;
             }
 

@@ -13,7 +13,33 @@ int main(){
     Fon.setTexture(texture);
 
     lol::player boy(200, 450, 48, 80, "player.png", 1, "Лирэ");
-    lol::Textbox Box(100, 500, 800, 300, "Box1.png");
+    
+    Texture textbox_texture;
+    Sprite textbox_sprite;
+    textbox_texture.loadFromFile("text/Box.png");
+    textbox_sprite.setTexture(textbox_texture);
+
+    sf::Font font;
+    if (!font.loadFromFile("text/thin_pixel-7.ttf")) {
+        // Обработка ошибки при загрузке шрифта
+        return -1;
+    }
+
+
+    sf::Text text;
+    text.setFont(font);
+    text.setString("Hello, World!");
+    text.setCharacterSize(35);
+    text.setPosition(200, 200);
+
+
+
+
+
+
+
+
+
 
     Clock clock;
     while (window.isOpen()){
@@ -78,16 +104,32 @@ int main(){
             window.draw(Fon);
             window.draw(boy.sprite);
         }
+        lol::Textbox Box(100, 500, 800, 300, "Box1.png");
+        bool flak = false;
         if (Keyboard::isKeyPressed(Keyboard::E)) {
-            Font font;
-            font.loadFromFile("text/thin_pixel-7.ttf");
-            Text text1("ewfjkwopjigpowejhfpiohgpoagvnosopdfjpoweiufh", font, 20);
+            cout << flak << endl;
+            flak = true;
+            window.draw(textbox_sprite);
+            window.draw(text);
+            window.display();
+            while (flak) {
+                window.draw(textbox_sprite);
+                window.draw(text);
+                
+                if (Keyboard::isKeyPressed(Keyboard::Q)) {
+                    flak = false;
+                    cout << endl;
+                    cout << flak << endl;
+                }
+            }
+          
            
         }
         window.clear();
         window.draw(Fon);
         window.draw(boy.sprite);
-        window.draw(Box.textbox_sprite);
+        
+        /*window.draw(Box.textbox_sprite);*/
         window.display();
     }
     return 0;
