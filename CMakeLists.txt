@@ -19,7 +19,7 @@ link_directories("ext/SFML/lib/")
 
 add_executable("${PROJECT_NAME}" main.cpp
                                  move.hpp
-
+  
 		
 )
 											

@@ -81,44 +81,75 @@ namespace lol {
             }
             if ((m_x <= 10) && (Keyboard::isKeyPressed(Keyboard::A))) {
                 m_speed = 0;
+
             }
 
             if ((m_y + m_h >= 1070) && (Keyboard::isKeyPressed(Keyboard::S)) && (m_location == 1)) {
                 m_speed = 0;
             }
-            if ((m_y <= 5) && (Keyboard::isKeyPressed(Keyboard::W)) && (m_location == 2)) {
+            if ((m_y <= 900) && (Keyboard::isKeyPressed(Keyboard::W)) && (m_location == 2)) {
                 m_speed = 0;
             }
             
         }
 
     };
-    class Textbox: public player {
+    class Textbox {
     public:
         Sprite textbox_sprite;
         float m1_x, m1_y, m1_w, m1_h=0;
+        String m_text;
         String m_name1;
         Texture textbox_texture;
         Font font;
-        Textbox(int x1, int y1, int w1, int h1, String name1) {
+        Textbox(int x1, int y1, int w1, int h1, String name1, String text) {
             m1_x = x1;
             m1_y = y1;
             m1_w = w1;
             m1_h = h1;
-            m_name = name1;
+            m_name1 = name1;
+            m_text = text;
             String word;
             font.loadFromFile("text/thin_pixel-7.ttf");
-            sf::Text text5 (word , font, 25);
-            text5.setPosition(200, 200);
+            sf::Text text5;
+            text5.setFont(font);
+            text5.setCharacterSize(55);
+            text5.setPosition(200, 700);
             textbox_texture.loadFromFile("text/" + name1 );
             textbox_sprite.setTexture(textbox_texture);
+            text5.setString(text);
             
            
+        } 
+    };
+
+    class npc: public player{
+    public:
+        float npc_x, npc_y, npc_w, npc_h = 0;
+        String npc_name;
+        Texture npc_texture;
+        Sprite npc_sprite;
+        npc(int x, int y, int w, int h, String name, int location) {
+            npc_x = x;
+            npc_y = y;
+            npc_w = w,
+            npc_h = h;
+            npc_name = name;
+            npc_texture.loadFromFile("assets/" + name);
+            npc_sprite.setTexture(npc_texture);
+            npc_sprite.setPosition(npc_x, npc_y);
         }
 
 
 
+
+
+
     };
+
+
+
+
 }
 
 

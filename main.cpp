@@ -1,7 +1,10 @@
 ﻿#include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "move.hpp"
+#include <vector>
+#include <chrono>
 using namespace sf;
+
 float kadr = 1; // кадр анимации
 
 int main(){
@@ -13,7 +16,15 @@ int main(){
     Fon.setTexture(texture);
 
     lol::player boy(200, 450, 48, 80, "player.png", 1, "Лирэ");
+
+
+    lol::npc npc (30, 450, 36, 82, "npc.png", 1);
     
+
+
+
+
+
     Texture textbox_texture;
     Sprite textbox_sprite;
     textbox_texture.loadFromFile("text/Box.png");
@@ -29,13 +40,18 @@ int main(){
     sf::Text text;
     text.setFont(font);
     text.setString(L"Лирэ");
-    text.setCharacterSize(55);
-    text.setPosition(200, 700);
+    text.setCharacterSize(70);
+    text.setPosition(155, 680);
 
 
 
 
+    sf::Text text1;
+    text1.setFont(font);
+    text1.setString(L"ertalalla");
 
+    text1.setCharacterSize(55);
+    text1.setPosition(200, 800);
 
 
 
@@ -52,6 +68,8 @@ int main(){
                 window.close();
         }
         boy.stopped(1000, 48,80, 800);
+        npc.stopped(1000, 36, 82, 800);
+        
         boy.update(time);
         if (Keyboard::isKeyPressed(Keyboard::A)) {
             boy.dir = 0;
@@ -61,6 +79,7 @@ int main(){
                 kadr = kadr - 4;
             }
             boy.sprite.setTextureRect(IntRect(48 * int(kadr), 240, 48, 80));
+
         }
         else if (Keyboard::isKeyPressed(Keyboard::D)) {
             boy.dir = 1;
@@ -70,6 +89,7 @@ int main(){
                 kadr = kadr - 4;
             }
             boy.sprite.setTextureRect(IntRect(48 * int(kadr), 160, 48, 80));
+
         }
         else if (Keyboard::isKeyPressed(Keyboard::W)) {
             boy.dir = 2;
@@ -79,6 +99,7 @@ int main(){
                 kadr = kadr - 4;
             }
             boy.sprite.setTextureRect(IntRect(48 * int(kadr), 80, 48, 80));
+  
         }
         else if (Keyboard::isKeyPressed(Keyboard::S)) {
             boy.dir = 3;
@@ -88,6 +109,7 @@ int main(){
                 kadr = kadr - 4;
             }
             boy.sprite.setTextureRect(IntRect(48 * int(kadr), 0, 48, 80));
+
         }
         if (boy.perehod(80, 800)){
             Sprite Pink;
@@ -96,6 +118,7 @@ int main(){
             window.clear();
             window.draw(Pink);
             window.draw(boy.sprite);
+
         }
         if (boy.granics(80, 800)) {
             texture.loadFromFile("assets/Fon.png");
@@ -103,37 +126,39 @@ int main(){
             window.clear();
             window.draw(Fon);
             window.draw(boy.sprite);
+            window.draw(npc.npc_sprite);
         }
-        lol::Textbox Box(100, 500, 800, 300, "Box1.png");
-        bool flak = false;
-        
+        lol::Textbox Box(100, 500, 800, 300, "Box1.png", "HELP ME");
+        vector<string> talk = { "Hello", "How are you?", "Im not Fine",  "Why", "Matan"};
+
+        float k = 0;
         if (Keyboard::isKeyPressed(Keyboard::E)) {
-            int k = 0;
-            flak = true;
+            std::chrono::system_clock::time_point currentTime1 = std::chrono::system_clock::now();    
             window.draw(Box.textbox_sprite);
             window.draw(text);
             window.display();
-            while ((flak) &&(k<2)) {
+            while ((k<5)) {
                 window.draw(Box.textbox_sprite);
-                window.draw(text);
-                
+                window.draw(text);   
                 if (Keyboard::isKeyPressed(Keyboard::Q)) {
-                    k = k + 1;
-                    Text text1;
-                    text1.setString(L"Lalalalalalla");
+                    cout << k << endl;
+                    text1.setString(talk[k]);
                     window.draw(text1);
-                    
-
+                    window.display();
+                    k = k+0.24;  
                 }
             }
-          
-           
         }
+
+
+
+
+
         window.clear();
         window.draw(Fon);
+        window.draw(npc.npc_sprite);
         window.draw(boy.sprite);
-        
-        /*window.draw(Box.textbox_sprite);*/
+       
         window.display();
     }
     return 0;
