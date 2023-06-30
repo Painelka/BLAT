@@ -133,8 +133,8 @@ int main(){
         vector<string> talk = { "Hello", "How are you?", "Im not Fine",  "Why", "Matan"};
 
         float k = 0;
-        if ((Keyboard::isKeyPressed(Keyboard::E))&& (npc.say()==false)) {
-            boy.m_speed = 0;
+        npc.say();
+        if ((Keyboard::isKeyPressed(Keyboard::E))&& (npc.say())) {
             cout << "rok" << endl;
             window.draw(Box.textbox_sprite);
             window.draw(text);

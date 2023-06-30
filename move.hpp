@@ -8,7 +8,7 @@ using namespace sf;
 namespace lol {
     class player { //класс персонажа
     public:
-        float m_x, m_y, m_w, m_h, m_vx, m_vy, m_speed = 0;
+        double m_x, m_y, m_w, m_h, m_vx, m_vy, m_speed = 0;
         int dir = 0;
         int m_location = 0;
         String m_name;
@@ -47,7 +47,7 @@ namespace lol {
                 return false;
             }
         }
-       
+
         bool granics(int y, int h) {
             if ((m_y + m_h >= 1080) && (Keyboard::isKeyPressed(Keyboard::S))&& (flag1 == false) && (flag == true)) {
                 m_y = 100;
@@ -92,7 +92,7 @@ namespace lol {
             }
             
         }
-
+        ~player() {}
     };
     class Textbox {
     public:
@@ -125,39 +125,54 @@ namespace lol {
 
     class npc: public player{
     public:
-        float npc_x, npc_y, npc_w, npc_h = 0;
+        double npc_x, npc_y, npc_w, npc_h = 0;
         String npc_name;
         Texture npc_texture;
         Sprite npc_sprite;
-        npc(int x, int y, int w, int h, String name, int location) {
-            npc_x = x;
-            npc_y = y;
-            npc_w = w,
-            npc_h = h;
-            npc_name = name;
-            npc_texture.loadFromFile("assets/" + name);
+        npc() {
+
+        }
+        npc(int x1, int y1, int w1, int h1, String name1, int location) {
+            npc_x = x1;
+            npc_y = y1;
+            npc_w = w1,
+            npc_h = h1;
+            npc_name = name1;
+            npc_texture.loadFromFile("assets/" + name1);
             npc_sprite.setTexture(npc_texture);
             npc_sprite.setPosition(npc_x, npc_y);
      
         }
-        bool say() {
-            if (((npc_x + npc_w )> m_x) || (m_x < (npc_x - 10) )) {
+        bool say()  {
+            double katet1 = (npc_x - m_x)* (npc_x - m_x);
+            double katet2 = (npc_y - m_y) * (npc_y - m_y);
+            double gip = sqrt(katet1 + katet2);
+            double ras = 20;
+            cout << gip << endl;
+            cout << ras << endl;
+            if (gip<=ras) {
                 cout << "5" << endl;
-                return false;
-            }
-            else {
                 return true;
             }
+            else {
+                return false;
+            }
         }
-
-
-
-
+        virtual void said() {
+            cout << "NAME" << endl;
+        }
+   
 
     };
 
+    class cat : public npc {
+        cat(int x1, int y1, int w1, int h1, String name1, int location) : npc(x1, y1, w1, h1, name1, location) {}
+        void said() override {
 
 
+
+        }
+    };
 
 }
 
