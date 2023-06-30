@@ -123,7 +123,7 @@ namespace lol {
         } 
     };
 
-    class npc: public player{
+    class npc{
     public:
         double npc_x, npc_y, npc_w, npc_h = 0;
         String npc_name;
@@ -143,36 +143,66 @@ namespace lol {
             npc_sprite.setPosition(npc_x, npc_y);
      
         }
-        bool say()  {
-            double katet1 = (npc_x - m_x)* (npc_x - m_x);
-            double katet2 = (npc_y - m_y) * (npc_y - m_y);
-            double gip = sqrt(katet1 + katet2);
-            double ras = 20;
-            cout << gip << endl;
-            cout << ras << endl;
-            if (gip<=ras) {
-                cout << "5" << endl;
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        virtual void said() {
+        virtual void said(String name2) {
             cout << "NAME" << endl;
+            SoundBuffer hello;
+            hello.loadFromFile("assets/" + name2);
+            Sound sound(hello);
+            sound.setVolume(30.f);
         }
    
 
     };
 
-    class cat : public npc {
-        cat(int x1, int y1, int w1, int h1, String name1, int location) : npc(x1, y1, w1, h1, name1, location) {}
-        void said() override {
 
 
+    class cat: public npc {
+    public:
+        double npc_x2, npc_y2, npc_w2, npc_h2 = 0;
+        String npc1_name;
+        Texture npc1_texture;
+        Sprite npc1_sprite;
+        sf::SoundBuffer hello;
+        sf::Sound sound;
+        cat() {
 
         }
+        cat(int x12, int y12, int w12, int h12, String name12) {
+            npc_x2 = x12;
+            npc_y2 = y12;
+            npc_w2 = w12,
+            npc_h2 = h12;
+            npc1_name = name12;
+            npc1_texture.loadFromFile("assets/" + name12);
+            npc1_sprite.setTexture(npc1_texture);
+            npc1_sprite.setPosition(npc_x2, npc_y2);
+
+        }
+
+
+        void said(String meo) override {
+            hello.loadFromFile("assets/" + meo);
+            sound.setBuffer(hello);
+            sound.setVolume(30.f);
+            sound.play();
+        }
+
+
     };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
