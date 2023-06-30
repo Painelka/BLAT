@@ -138,8 +138,17 @@ namespace lol {
             npc_texture.loadFromFile("assets/" + name);
             npc_sprite.setTexture(npc_texture);
             npc_sprite.setPosition(npc_x, npc_y);
+     
         }
-
+        bool say() {
+            if (((npc_x + npc_w )> m_x) || (m_x < (npc_x - 10) )) {
+                cout << "5" << endl;
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
 
 
 

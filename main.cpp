@@ -19,7 +19,6 @@ int main(){
 
 
     lol::npc npc (30, 450, 36, 82, "npc.png", 1);
-    
 
 
 
@@ -118,6 +117,7 @@ int main(){
             window.clear();
             window.draw(Pink);
             window.draw(boy.sprite);
+            npc.npc_sprite.setPosition(-205, -30);
 
         }
         if (boy.granics(80, 800)) {
@@ -126,14 +126,16 @@ int main(){
             window.clear();
             window.draw(Fon);
             window.draw(boy.sprite);
+            npc.npc_sprite.setPosition(30, 450);
             window.draw(npc.npc_sprite);
         }
         lol::Textbox Box(100, 500, 800, 300, "Box1.png", "HELP ME");
         vector<string> talk = { "Hello", "How are you?", "Im not Fine",  "Why", "Matan"};
 
         float k = 0;
-        if (Keyboard::isKeyPressed(Keyboard::E)) {
-            std::chrono::system_clock::time_point currentTime1 = std::chrono::system_clock::now();    
+        if ((Keyboard::isKeyPressed(Keyboard::E))&& (npc.say()==false)) {
+            boy.m_speed = 0;
+            cout << "rok" << endl;
             window.draw(Box.textbox_sprite);
             window.draw(text);
             window.display();
@@ -141,7 +143,6 @@ int main(){
                 window.draw(Box.textbox_sprite);
                 window.draw(text);   
                 if (Keyboard::isKeyPressed(Keyboard::Q)) {
-                    cout << k << endl;
                     text1.setString(talk[k]);
                     window.draw(text1);
                     window.display();
