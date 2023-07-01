@@ -17,7 +17,7 @@ int main(){
 
     lol::player boy(200, 450, 48, 80, "player.png", 1, "Лирэ");
     lol::npc npc (30, 450, 36, 82, "npc.png", 1);
-    lol::cat cat (1200, 500, 74, 120, "bananacat.png");
+    lol::cat cat (1400, 370, 74, 120, "bananacat.png");
 
 
 
@@ -119,7 +119,7 @@ int main(){
             window.draw(Pink);
             window.draw(boy.sprite);
             npc.npc_sprite.setPosition(-205, -30);
-            cat.npc1_sprite.setPosition(-205, -30);
+            cat.npc1_sprite.setPosition(-205, -300);
 
         }
         if (boy.granics(80, 800)) {
@@ -130,39 +130,34 @@ int main(){
             window.draw(boy.sprite);
             npc.npc_sprite.setPosition(30, 450);
             window.draw(npc.npc_sprite);
-            cat.npc1_sprite.setPosition(787, 500);
+            cat.npc1_sprite.setPosition(1400, 370);
             window.draw(cat.npc1_sprite);
         }
         lol::Textbox Box(100, 500, 800, 300, "Box1.png", "HELP ME");
-        vector<string> talk = { "Hello", "...", "Im not Fine",  "Why", "Matan"};
-    
+        vector<string> talk = { "Hello", "...", "Im not Fine",  "Im dead", "Because Matan"};
         float k = 0;
         if ((Keyboard::isKeyPressed(Keyboard::E))&& (boy.m_x<=npc.npc_x+50)&& (boy.m_y <= npc.npc_y + 50)) {
- 
             window.draw(Box.textbox_sprite);
             window.draw(text);
             window.display();
             while ((k<5)) {
                 window.draw(Box.textbox_sprite);
-                window.draw(text);
-                if (1 <= k < 2) {
-                    window.draw(Box.textbox_sprite);
-                    window.draw(text3);
-                    
-                }
+                window.draw(text3);
+
+
                 if (Keyboard::isKeyPressed(Keyboard::Q)) {
                   
                     cout << k << endl;
                     text1.setString(talk[k]);
                     window.draw(text1);
                     window.display();
-                    k = k + 0.045;
+                    k = k + 0.006;
                 }
             }
         }
         float t = 0;
         vector<string> talk2 = { "Cat?", "Cute....?"};
-        if((Keyboard::isKeyPressed(Keyboard::E)) && ((cat.npc_x2 + 100) >= boy.m_x >= (cat.npc_x2 - 100)) && ((cat.npc_y2 + 50) >= boy.m_y )) {
+        if((Keyboard::isKeyPressed(Keyboard::E)) && ((cat.npc_x2 + 70) >= boy.m_x) && ((cat.npc_y2 + 70) >= boy.m_y )) {
             cat.said("meow.wav");
             cout << cat.npc_x2 << endl;
             cout << cat.npc_y2 << endl;
@@ -170,7 +165,7 @@ int main(){
             window.draw(Box.textbox_sprite);
             window.draw(text);
             window.display();
-            while ((t <= 2)) {
+            while ((t <= 1.99)) {
                 window.draw(Box.textbox_sprite);
                 window.draw(text);
                 if (Keyboard::isKeyPressed(Keyboard::Q)) {
