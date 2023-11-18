@@ -69,7 +69,7 @@ int main()
                     Intro.stop();
                     if (x == 0)
                     {
-                        lol::player GG(950, 600, 96, 160, "gg.png", 1); //локация гг х и у
+                        lol::player GG( 950, 600, 96, 160, "gg.png", 1); //локация гг х и у
                         lol::npc npc(500, 300, 36, 82, "npc.png", 1);
                         lol::cat cat(1400, 370, 74, 120, "bananacat.png");
 
