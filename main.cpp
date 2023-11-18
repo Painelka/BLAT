@@ -144,7 +144,6 @@ int main(){
                 window.draw(Box.textbox_sprite);
                 window.draw(text3);
 
-
                 if (Keyboard::isKeyPressed(Keyboard::Q)) {
                   
                     cout << k << endl;
